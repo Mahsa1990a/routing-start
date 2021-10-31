@@ -7,9 +7,9 @@
         <li role="presentation"><a href="/users">Users</a></li> -->
         <!-- With adding /users or ... will refresh the page after each click so we have to use routerLink directive instead of href: -->
         <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="/servers">Servers</a></li>
+        <li role="presentation"><a routerLink="servers">Servers</a></li>
         <!-- <li role="presentation"><a routerLink="/users">Users</a></li>  OR binding into routerLink -->
-        <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
+        <li role="presentation"><a [routerLink]="['users']">Users</a></li>
       </ul>
     </div>
   </div>
