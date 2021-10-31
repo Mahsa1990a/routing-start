@@ -6,10 +6,23 @@
         <li role="presentation"><a href="/servers">Servers</a></li>
         <li role="presentation"><a href="/users">Users</a></li> -->
         <!-- With adding /users or ... will refresh the page after each click so we have to use routerLink directive instead of href: -->
-        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="servers">Servers</a></li>
+        <!-- <li role="presentation" class="active"><a routerLink="/">Home</a></li>  to put ACTIVE class dynamically use routerLinkActive directive: -->
+
+        <!-- [routerLinkActiveOptions]="{exact: true}" means do active class if the whole path is / not some parts like /users or /servers -->
+        <li role="presentation"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation"
+          routerLinkActive="active">
+          <a routerLink="servers">Servers</a>
+        </li>
         <!-- <li role="presentation"><a routerLink="/users">Users</a></li>  OR binding into routerLink -->
-        <li role="presentation"><a [routerLink]="['users']">Users</a></li>
+        <li role="presentation"
+          routerLinkActive="active">
+          <a [routerLink]="['users']">Users</a>
+        </li>
       </ul>
     </div>
   </div>
