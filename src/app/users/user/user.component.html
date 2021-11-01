@@ -2,3 +2,7 @@
 <p>User with ID {{ user.id }} loaded.</p>
 <!-- <p>User name is _NAME_</p> -->
 <p>User name is {{ user.name }}</p>
+<hr>
+<!-- This route is => /users/10/Mahsa -->
+<a [routerLink]="['/users', 10, 'Mahsa']">Load Mahsa id 10</a>
+
