@@ -17,8 +17,9 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'servers', component: ServersComponent },
   { path: 'users', component: UsersComponent },
-  // route for single user => : shows this id is dynamic
-  { path: 'users/:id', component: UserComponent } //assign single UserComponent
+  // route for single user => : shows this idDynamic is dynamic
+  { path: 'users/:idDynamic/:nameDynamic', component: UserComponent } //assign single UserComponent
+  // can add as many as dynamic property here ^ and retrive from component
 ];
 
 @NgModule({
