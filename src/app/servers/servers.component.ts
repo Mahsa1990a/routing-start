@@ -26,7 +26,10 @@ export class ServersComponent implements OnInit {
     // this.routerProp.navigate(['/servers']);   OR:
     // second arg: relative to which route, this link should be loaded by default
     // this.routerProp.navigate(['servers'], {relativeTo: this.routeProp}); not working
-    this.routerProp.navigate(['/servers'], {relativeTo: this.routeProp});
+    this.routerProp.navigate(
+      ['/servers'],
+      {relativeTo: this.routeProp}
+    );
   }
 
 }
