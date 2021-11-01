@@ -16,7 +16,9 @@ const appRoutes: Routes = [
   // path: after domin in url(localhost:4200/users), component: is action, which component should load
   { path: '', component: HomeComponent },
   { path: 'servers', component: ServersComponent },
-  { path: 'users', component: UsersComponent }
+  { path: 'users', component: UsersComponent },
+  // route for single user => : shows this id is dynamic
+  { path: 'users/:id', component: UserComponent } //assign single UserComponent
 ];
 
 @NgModule({
