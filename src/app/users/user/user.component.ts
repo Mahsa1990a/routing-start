@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+//                                            OnDestroy lifecycle hook
+export class UserComponent implements OnInit, OnDestroy {
 
   user: {id: number, name: string};
+
+  paramsSubscription : Subscription;
 
   // by injecting this, we'll get access to currently loaded route
   // this currently loaded route is a js object with a lot of meta data about the currently loaded route
@@ -24,6 +28,7 @@ export class UserComponent implements OnInit {
 
     // to be able to reaction to subsequent changes(routerLink in temp) we need:
     //params is observable, observables are feature(third party package) allow you easily work with async tasks
+    this.paramsSubscription = //is now bound to this subscribe, returns us subscribtion
     this.routeProp.params // to not block your code
       .subscribe( //it will update user id & name whenever parameter change:
         (updatedParams: Params) => {
@@ -32,6 +37,10 @@ export class UserComponent implements OnInit {
         }
       );
 
+  }
+
+  ngOnDestroy() { // to unsubscribe your subscribe
+    this.paramsSubscription.unsubscribe();
   }
 
 }
