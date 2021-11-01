@@ -1,7 +1,13 @@
 <div class="row" style="margin-top: 10px;">
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
+      <!-- created route: localhost:4200/servers/5/edit -->
+      <!-- For adding query: bind to queryParams property (queryParams is a bindable property from routeLink directive)-->
+      <!-- [fragment]="'loading...'"  OR fragment="loading..." -->
       <a
+        [routerLink]="['/servers', 5, 'edit']"
+        [queryParams]="{allowEdit: '1'}"
+        [fragment]="'loading'"
         href="#"
         class="list-group-item"
         *ngFor="let server of servers">

@@ -20,4 +20,12 @@ export class HomeComponent implements OnInit {
     this.routerProp.navigate(['/servers']); //navigate through our route
   }
 
+  onLoadServerEvent(serverId: number) {
+    this.routerProp.
+      navigate(
+        ['/servers', serverId, 'edit'],
+        {queryParams: {allowEdit: '1'}, fragment: 'loading'}
+      );
+  }
+
 }

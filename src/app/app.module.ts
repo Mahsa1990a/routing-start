@@ -16,6 +16,7 @@ const appRoutes: Routes = [
   // path: after domin in url(localhost:4200/users), component: is action, which component should load
   { path: '', component: HomeComponent },
   { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id/edit', component: EditServerComponent }, //add new route
   { path: 'users', component: UsersComponent },
   // route for single user => : shows this idDynamic is dynamic
   { path: 'users/:idDynamic/:nameDynamic', component: UserComponent } //assign single UserComponent
