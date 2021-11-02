@@ -35,8 +35,11 @@ export class ServerComponent implements OnInit {
   onEdit() { //with this event want to navigate into edit-server component
     // 1.First need to access to router in constructor
     // 2.Navigate:
-    //                      // or just: ['edit']                  //refrence to currently loaded route
-    this.routerPre.navigate(['/servers', this.server.id, 'edit'], {relativeTo: this.routePre});
+    //                      // or just: ['edit']
+    this.routerPre.navigate(
+      ['/servers', this.server.id, 'edit'],
+      //refrence to currently loaded route
+      {relativeTo: this.routePre, queryParamsHandling: 'preserve'});// queryParamsHandling: 'preserve'(for over writing old one)
   }
 
 }
