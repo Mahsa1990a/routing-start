@@ -28,12 +28,16 @@
   <!-- <a routerLink="servers">Reload Page</a>   will be: localhost:4200/servers/servers -->
   <!-- <a routerLink="/servers">Reload Page</a>   will be: localhost:4200/servers -->
     <!-- <a routerLink="/servers">Reload Page</a>  OR: -->
-    <a routerLink="../servers">Reload Page</a>
+    <!-- <a routerLink="../servers">Reload Page</a> -->
+
+
     <!-- Using relative path: -->
-    <button class="btn btn-primary" (click)="onReloadEvent()">Reload Reload Page</button>
+    <!-- <button class="btn btn-primary" (click)="onReloadEvent()">Reload Reload Page</button> -->
     <!-- <app-edit-server></app-edit-server>   -->
-    <hr>
+    <!-- <hr> -->
     <!-- <app-server></app-server> Later we'll learn nested router -->
+    <!-- instead of these ^ lines:   for showinh the nested routes here-->
+    <router-outlet></router-outlet>
   </div>
 </div>
 

@@ -15,13 +15,22 @@ import { ServersService } from './servers/servers.service';
 const appRoutes: Routes = [
   // path: after domin in url(localhost:4200/users), component: is action, which component should load
   { path: '', component: HomeComponent },
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id', component: ServerComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent }, //add new route
-  { path: 'users', component: UsersComponent },
-  // route for single user => : shows this idDynamic is dynamic
-  { path: 'users/:idDynamic/:nameDynamic', component: UserComponent } //assign single UserComponent
-  // can add as many as dynamic property here ^ and retrive from component
+
+  { path: 'servers', component: ServersComponent, children: [ //adding child route, nested childs needs their own <router-outlet>
+    // { path: 'servers/:id', component: ServerComponent }, after adding as child:
+    { path: ':id', component: ServerComponent },
+    // { path: 'servers/:id/edit', component: EditServerComponent }, //after adding as child:
+    { path: ':id/edit', component: EditServerComponent }, //add new route
+    ]
+  },
+
+
+  { path: 'users', component: UsersComponent, children: [
+    // route for single user => : shows this idDynamic is dynamic
+    { path: ':idDynamic/:nameDynamic', component: UserComponent } //assign single UserComponent
+    // can add as many as dynamic property here ^ and retrive from component
+    ]
+  },
 ];
 
 @NgModule({
