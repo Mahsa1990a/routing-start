@@ -4,8 +4,17 @@
       <!-- created route: localhost:4200/servers/5/edit -->
       <!-- For adding query: bind to queryParams property (queryParams is a bindable property from routeLink directive)-->
       <!-- [fragment]="'loading...'"  OR fragment="loading..." -->
-      <a
+      <!-- <a
         [routerLink]="['/servers', 5, 'edit']"
+        [queryParams]="{allowEdit: '1'}"
+        [fragment]="'loading'"
+        href="#"
+        class="list-group-item"
+        *ngFor="let server of servers">
+        {{ server.name }}
+      </a>     INSTEAD of hard coded:-->
+      <a
+        [routerLink]="['/servers', server.id]"
         [queryParams]="{allowEdit: '1'}"
         [fragment]="'loading'"
         href="#"
@@ -22,9 +31,9 @@
     <a routerLink="../servers">Reload Page</a>
     <!-- Using relative path: -->
     <button class="btn btn-primary" (click)="onReloadEvent()">Reload Reload Page</button>
-    <app-edit-server></app-edit-server>
+    <!-- <app-edit-server></app-edit-server>   -->
     <hr>
-    <app-server></app-server>
+    <!-- <app-server></app-server> Later we'll learn nested router -->
   </div>
 </div>
 
