@@ -11,6 +11,7 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   // path: after domin in url(localhost:4200/users), component: is action, which component should load
@@ -31,6 +32,12 @@ const appRoutes: Routes = [
     // can add as many as dynamic property here ^ and retrive from component
     ]
   },
+
+  // for unkown routes:
+  {path: 'not-found', component: PageNotFoundComponent},
+  //           If don't want to specify components: use redirectTo: 'the path'(it redirect automatically to /not-found route)
+  {path: '**', redirectTo: '/not-found'} //should be the last one(route pars from top to bottom)
+  // for unkown routes
 ];
 
 @NgModule({
@@ -41,7 +48,8 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
