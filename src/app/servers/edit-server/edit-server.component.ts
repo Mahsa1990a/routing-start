@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { ServersService } from '../servers.service';
 
@@ -12,6 +12,7 @@ export class EditServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
   serverName = '';
   serverStatus = '';
+  allowEditP:boolean = false;
 
   constructor(
     private serversService: ServersService,
@@ -24,7 +25,12 @@ export class EditServerComponent implements OnInit {
     console.log("fragment: ===>", this.routeProp.snapshot.fragment);//loading(coming from server component)
 
     // REACT to change query parameters:  (For making sure you're not missing data)
-    this.routeProp.queryParams.subscribe();
+    // retrieve our queryParams:
+    this.routeProp.queryParams.subscribe(
+      (queryParamsss: Params) => {
+        this.allowEditP = queryParamsss['allowEdit'] === '1' ? true : false;
+      }
+    );
     this.routeProp.fragment.subscribe();
     ///////////////////////
 

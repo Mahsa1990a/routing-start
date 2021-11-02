@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { ServersService } from '../servers.service';
 
@@ -13,7 +13,8 @@ export class ServerComponent implements OnInit {
 
   constructor(
     private serversService: ServersService,
-    private routePre: ActivatedRoute
+    private routePre: ActivatedRoute,
+    private routerPre: Router
     ) { }
 
   ngOnInit() {
@@ -29,6 +30,13 @@ export class ServerComponent implements OnInit {
           this.server = this.serversService.getServer(+parameters['id']);//(change it to number qith adding +)
         }
       );
+  }
+
+  onEdit() { //with this event want to navigate into edit-server component
+    // 1.First need to access to router in constructor
+    // 2.Navigate:
+    //                      // or just: ['edit']                  //refrence to currently loaded route
+    this.routerPre.navigate(['/servers', this.server.id, 'edit'], {relativeTo: this.routePre});
   }
 
 }
