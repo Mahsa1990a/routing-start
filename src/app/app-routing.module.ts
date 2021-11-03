@@ -16,7 +16,12 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
 
   //                 by adding this we want to guard servers and it's chil routes
-  { path: 'servers', canActivate: [AuthGuardService], component: ServersComponent, children: [ //adding child route, nested childs needs their own <router-outlet>
+  {
+    path: 'servers',
+    // canActivate: [AuthGuardService],  after adding canActivateChild in service:
+    canActivateChild: [AuthGuardService], // AuthGuardService protect all route and it's childs
+    component: ServersComponent,
+    children: [ //adding child route, nested childs needs their own <router-outlet>
     // { path: 'servers/:id', component: ServerComponent }, after adding as child:
     { path: ':id', component: ServerComponent },
     // { path: 'servers/:id/edit', component: EditServerComponent }, //after adding as child:
