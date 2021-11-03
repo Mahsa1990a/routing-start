@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AuthGuardService } from "./auth-guard.service";
 
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
@@ -14,14 +15,14 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 
-  { path: 'servers', component: ServersComponent, children: [ //adding child route, nested childs needs their own <router-outlet>
+  //                 by adding this we want to guard servers and it's chil routes
+  { path: 'servers', canActivate: [AuthGuardService], component: ServersComponent, children: [ //adding child route, nested childs needs their own <router-outlet>
     // { path: 'servers/:id', component: ServerComponent }, after adding as child:
     { path: ':id', component: ServerComponent },
     // { path: 'servers/:id/edit', component: EditServerComponent }, //after adding as child:
     { path: ':id/edit', component: EditServerComponent }, //add new route
     ]
   },
-
 
   { path: 'users', component: UsersComponent, children: [
     // route for single user => : shows this idDynamic is dynamic
