@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   // we can inject router:
-  constructor(private routerProp: Router) { }
+  constructor(private routerProp: Router,
+    private authServiceP: AuthService) { }
 
   ngOnInit() {
   }
@@ -26,6 +28,13 @@ export class HomeComponent implements OnInit {
         ['/servers', serverId, 'edit'],
         {queryParams: {allowEdit: '1'}, fragment: 'loading'}
       );
+  }
+
+  onLogin() { //1sec after clicking login, it allow us to seec hilds of servers
+    this.authServiceP.login();
+  }
+  onLogout() {
+    this.authServiceP.logout();
   }
 
 }
