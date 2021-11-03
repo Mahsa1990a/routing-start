@@ -4,6 +4,7 @@ import { AuthGuardService } from "./auth-guard.service";
 
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { CanDeactivateGaurd } from "./servers/edit-server/can-deactivate-guard.service";
 import { EditServerComponent } from "./servers/edit-server/edit-server.component";
 import { ServerComponent } from "./servers/server/server.component";
 import { ServersComponent } from "./servers/servers.component";
@@ -25,7 +26,10 @@ const appRoutes: Routes = [
     // { path: 'servers/:id', component: ServerComponent }, after adding as child:
     { path: ':id', component: ServerComponent },
     // { path: 'servers/:id/edit', component: EditServerComponent }, //after adding as child:
-    { path: ':id/edit', component: EditServerComponent }, //add new route
+    { path: ':id/edit',
+      component: EditServerComponent,
+      canDeactivate: [CanDeactivateGaurd] //whenever we are trying to this route, angular would run this
+    }, //add new route
     ]
   },
 
