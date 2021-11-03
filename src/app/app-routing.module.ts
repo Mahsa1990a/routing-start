@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AuthGuardService } from "./auth-guard.service";
+import { ErrorPageComponent } from "./error-page/error-page.component";
 
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
@@ -41,7 +42,9 @@ const appRoutes: Routes = [
   },
 
   // for unkown routes:
-  {path: 'not-found', component: PageNotFoundComponent},
+  // {path: 'not-found', component: PageNotFoundComponent}, update after adding err component
+  //                                                passing static data with data property({key: value})
+  {path: 'not-found', component: ErrorPageComponent, data: {message: "Page Not Found"} },
   //           If don't want to specify components: use redirectTo: 'the path'(it redirect automatically to /not-found route)
   {path: '**', redirectTo: '/not-found'} //should be the last one(route pars from top to bottom)
   // for unkown routes
