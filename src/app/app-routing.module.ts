@@ -53,7 +53,10 @@ const appRoutes: Routes = [
 
 @NgModule({//decorator
   imports: [
-    RouterModule.forRoot(appRoutes) // <= register routes into our app
+    // register routes into our app//configuration
+    // RouterModule.forRoot(appRoutes, {useHash: true})// after adding useHash => localohost:4200/#/home and ...
+    // # informs web server: only care about part before # in url(which is: localohost:4200/)
+    RouterModule.forRoot(appRoutes)
   ],
   //want to outsource our routes(need to add AppRoutingModule to main app module):
   exports: [RouterModule]
