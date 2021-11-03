@@ -17,6 +17,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { CanDeactivateGaurd } from './servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ServerResolver } from './servers/server/server-resolver.service';
 
 // Move appRoutes into app-routing.module.ts
 
@@ -40,7 +41,13 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 
     AppRoutingModule
   ],
-  providers: [ServersService, AuthGuardService, AuthService, CanDeactivateGaurd],
+  providers: [
+    ServersService,
+    AuthGuardService,
+    AuthService,
+    CanDeactivateGaurd,
+    ServerResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { CanDeactivateGaurd } from "./servers/edit-server/can-deactivate-guard.service";
 import { EditServerComponent } from "./servers/edit-server/edit-server.component";
+import { ServerResolver } from "./servers/server/server-resolver.service";
 import { ServerComponent } from "./servers/server/server.component";
 import { ServersComponent } from "./servers/servers.component";
 import { UserComponent } from "./users/user/user.component";
@@ -25,7 +26,7 @@ const appRoutes: Routes = [
     component: ServersComponent,
     children: [ //adding child route, nested childs needs their own <router-outlet>
     // { path: 'servers/:id', component: ServerComponent }, after adding as child:
-    { path: ':id', component: ServerComponent },
+    { path: ':id', component: ServerComponent, resolve: {serverProperty: ServerResolver} },
     // { path: 'servers/:id/edit', component: EditServerComponent }, //after adding as child:
     { path: ':id/edit',
       component: EditServerComponent,
